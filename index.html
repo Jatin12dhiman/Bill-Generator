@@ -4,8 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <h2 >Yaara Da Dhaba</h2>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="part1">
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    Full name: <input type="text" id="name"><br/>
+                    Your Email: <input type="text" id="email">
+                </fieldset>
+            </div>
+            <div class="part2">
+                <fieldset>
+                    <legend>Your Orders</legend>
+                    Smosa (Rs.10): <input type="text"><br/>
+                    Kachori (Rs.10): <input type="text"><br/>
+                    Vadapao (Rs.10): <input type="text"><br/>
+                    Maggi (Rs.10): <input type="text"><br/>
+                </fieldset>
+            </div>
+        </div>
+        <div class="container">
+            <fieldset>
+                <legend>Your Bill</legend>
+                <h3>Your Name:  <span id="name2"> </span></h3>
+                <h3>Email: <span id="email2"></span></h3>
+                <table border="1">
+                    <tr><th>Menu</th><th>Price</th><th>Quantity</th><th>Amount</th></tr>
+                    <tr><td>Samosa</td><td>Rs. 10</td><td>1</td><td>10x1=10</td></tr>
+                </table>
+            </fieldset>
+            <h1>Total Amount: Rs.10</h1>
+        </div>
+    </div>
+    <script>
+        var name="";//Blank dena Padega kyoki bina chle kuch na kuch prit krega
+       document.getElementById("name").addEventListener("keyup",function(){
+       name= document.getElementById("name").value; //Value to text field k liye hota h
+        document.getElementById("name2").innerHTML=name; //Inner html is k liyef
+       })
+
+       var email="";//Blank dena Padega kyoki bina chle kuch na kuch prit krega
+       document.getElementById("email").addEventListener("keyup",function(){
+       email= document.getElementById("email").value; //Value to text field k liye hota h
+        document.getElementById("email2").innerHTML=email; //Inner html is k liyef
+       })
+
+
+
+    </script>
 </body>
 </html>
