@@ -42,14 +42,14 @@
                     </tbody>
                 </table>
             </fieldset>
-            <h1>Total Amount: Rs.10</h1>
+            <h1>Total Amount: Rs. <span id="amount"></span></h1>
         </div>
     </div>
     <script>
 
         var Smosa_price=10,kachori_price=12,Vadapav_price=60,Maggi_price=50;
        var Smosa_q=0 , kachori_q=0 , Vadapav_q=0 ,Maggi_q=0 ; 
-       var SmosaPriceShow="", KachoriPriceShow="";
+       var SmosaPriceShow="", KachoriPriceShow="",VadapavPriceShow="",MaggiPriceShow="";
 
       //  var name="";//Blank dena Padega kyoki bina chle kuch na kuch prit krega
        document.getElementById("name").addEventListener("keyup",function(){
@@ -69,6 +69,7 @@
         document.getElementById("smosa").addEventListener("keyup",function(){
             if(this.value==""||this.value==0){
                 SmosaPriceShow="";
+                Smosa_q=0;
                 showBill()
             }
             else{
@@ -82,6 +83,7 @@
         document.getElementById("kachori").addEventListener("keyup",function(){
             if(this.value==""||this.value==0){
                 KachoriPriceShow="";
+                kachori_q=0
                 showBill()
             }
             else{
@@ -90,10 +92,41 @@
             KachoriPriceShow="<tr><td>Kachori</td><td>Rs."+kachori_price+"</td><td>"+kachori_q+"</td><td>"+kachori_price+"x"+kachori_q+"="+kachori_price*kachori_q+"</td></tr>"
             showBill()
             }
+        });
+
+        document.getElementById("Vadapav").addEventListener("keyup",function(){
+            if(this.value==""||this.value==0){
+                vadapavPriceShow="";
+                Vadapav_q=0
+                showBill()
+            }
+            else{
+            
+            Vadapav_q=this.value
+            VadapavPriceShow="<tr><td>Vadapav</td><td>Rs."+Vadapav_price+"</td><td>"+Vadapav_q+"</td><td>"+Vadapav_price+"x"+Vadapav_q+"="+Vadapav_price*Vadapav_q+"</td></tr>"
+            showBill()
+            }
         })
 
+        document.getElementById("maggi").addEventListener("keyup",function(){
+            if(this.value==""||this.value==0){
+                MaggiPriceShow="";
+                Maggi_q=0
+                showBill()
+            }
+            else{
+            
+            Maggi_q=this.value
+            MaggiPriceShow="<tr><td>Maggi</td><td>Rs."+Maggi_price+"</td><td>"+Maggi_q+"</td><td>"+Maggi_price+"x"+Maggi_q+"="+Maggi_price*Maggi_q+"</td></tr>"
+            showBill()
+            }
+        })
+
+
+
         function showBill(){
-            document.getElementById("BillStatement").innerHTML=SmosaPriceShow+KachoriPriceShow
+            document.getElementById("BillStatement").innerHTML=SmosaPriceShow+KachoriPriceShow+VadapavPriceShow+MaggiPriceShow;
+            document.getElementById("amount").innerHTML=Smosa_price*Smosa_q+kachori_price*kachori_q+Vadapav_price*Vadapav_q+Maggi_price*Maggi_q 
         }
 
     </script>
