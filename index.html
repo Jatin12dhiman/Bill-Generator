@@ -20,10 +20,10 @@
             <div class="part2">
                 <fieldset>
                     <legend>Your Orders</legend>
-                    Smosa (Rs.10): <input type="text"><br/>
-                    Kachori (Rs.10): <input type="text"><br/>
-                    Vadapao (Rs.10): <input type="text"><br/>
-                    Maggi (Rs.10): <input type="text"><br/>
+                    Smosa (Rs.10): <input type="text" id="smosa"><br/>
+                    Kachori (Rs.10): <input type="text" id="kachori"><br/>
+                    Vadapav (Rs.10): <input type="text" id="Vadapav"><br/>
+                    Maggi (Rs.10): <input type="text" id="maggi"><br/>
                 </fieldset>
             </div>
         </div>
@@ -33,27 +33,68 @@
                 <h3>Your Name:  <span id="name2"> </span></h3>
                 <h3>Email: <span id="email2"></span></h3>
                 <table border="1">
-                    <tr><th>Menu</th><th>Price</th><th>Quantity</th><th>Amount</th></tr>
-                    <tr><td>Samosa</td><td>Rs. 10</td><td>1</td><td>10x1=10</td></tr>
+                    <thead>
+                        
+                        <tr><th>Menu</th><th>Price</th><th>Quantity</th><th>Amount</th></tr>
+                    </thead>
+                    <tbody id="BillStatement">
+
+                    </tbody>
                 </table>
             </fieldset>
             <h1>Total Amount: Rs.10</h1>
         </div>
     </div>
     <script>
-        var name="";//Blank dena Padega kyoki bina chle kuch na kuch prit krega
+
+        var Smosa_price=10,kachori_price=12,Vadapav_price=60,Maggi_price=50;
+       var Smosa_q=0 , kachori_q=0 , Vadapav_q=0 ,Maggi_q=0 ; 
+       var SmosaPriceShow="", KachoriPriceShow="";
+
+      //  var name="";//Blank dena Padega kyoki bina chle kuch na kuch prit krega
        document.getElementById("name").addEventListener("keyup",function(){
        name= document.getElementById("name").value; //Value to text field k liye hota h
         document.getElementById("name2").innerHTML=name; //Inner html is k liyef
        })
+       /* Niche Wala Thoda short form me h , Hm isse Upr Wle ki trh bhi likh skte h , But nice wala bhi aana chiye*/
 
-       var email="";//Blank dena Padega kyoki bina chle kuch na kuch prit krega
+     //   var email="";//Blank dena Padega kyoki bina chle kuch na kuch prit krega
        document.getElementById("email").addEventListener("keyup",function(){
-       email= document.getElementById("email").value; //Value to text field k liye hota h
-        document.getElementById("email2").innerHTML=email; //Inner html is k liyef
+       //email= this.value; //Value to text field k liye hota h {This is indicating getElement BY ID}
+        document.getElementById("email2").innerHTML=this.value; //Inner html is k liye
        })
 
 
+
+        document.getElementById("smosa").addEventListener("keyup",function(){
+            if(this.value==""||this.value==0){
+                SmosaPriceShow="";
+                showBill()
+            }
+            else{
+            
+            Smosa_q=this.value
+            SmosaPriceShow="<tr><td>Samosa</td><td>Rs."+Smosa_price+"</td><td>"+Smosa_q+"</td><td>"+Smosa_price+"x"+Smosa_q+"="+Smosa_price*Smosa_q+"</td></tr>"
+            showBill()
+            }
+        })
+
+        document.getElementById("kachori").addEventListener("keyup",function(){
+            if(this.value==""||this.value==0){
+                KachoriPriceShow="";
+                showBill()
+            }
+            else{
+            
+            kachori_q=this.value
+            KachoriPriceShow="<tr><td>Kachori</td><td>Rs."+kachori_price+"</td><td>"+kachori_q+"</td><td>"+kachori_price+"x"+kachori_q+"="+kachori_price*kachori_q+"</td></tr>"
+            showBill()
+            }
+        })
+
+        function showBill(){
+            document.getElementById("BillStatement").innerHTML=SmosaPriceShow+KachoriPriceShow
+        }
 
     </script>
 </body>
